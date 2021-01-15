@@ -1,6 +1,4 @@
-import { ChuckNorrisService } from './services/chuckNorris.service';
 import { Component } from '@angular/core';
-import { SwUpdate} from '@angular/service-worker'
 
 @Component({
   selector: 'app-root',
@@ -9,17 +7,8 @@ import { SwUpdate} from '@angular/service-worker'
 })
 export class AppComponent {
   title = 'animal-farming-register';
-  joke: any;
 
-  constructor(updates: SwUpdate, private chuckNorrisService: ChuckNorrisService) {
-    updates.available.subscribe(event => {
-      updates.activateUpdate().then(() => document.location.reload());
-    })
-  }
+  constructor() {
 
-  ngOnInit() {
-    this.chuckNorrisService.gimmeJokes().subscribe(res => {
-      this.joke = res;
-    })
   }
 }

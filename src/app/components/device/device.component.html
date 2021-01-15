@@ -1,9 +1,7 @@
-<li>
-  <div>
-    <div style="display: inline-block;" [ngStyle]="{color: isActive() ? 'green' : 'red'}">{{ deviceName }} is {{ getStatus() }}</div>
-    <div class="statusMarker" [ngClass]="{'statusMarkerOn': isActive(), 'statusMarkerOff': !isActive()}"></div>
+<li class="list-group-item" [ngClass]="{'list-group-item-success': isActive(), 'list-group-item-danger': !isActive()}">
+  <div class="row font-weight-bold" [ngStyle]="{color: isActive() ? 'green' : 'red'}"><a [routerLink]="[id]">{{ deviceName }}</a> is {{ getStatus() }}</div>
+  <div class="row">
+    <button class="btn btn-success btn-xs ml-4" (click)="onSwitchOn()" [disabled]="isActive()">Allumer</button>
+    <button class="btn btn-danger btn-xs ml-4" (click)="onSwitchOff()" [disabled]="!isActive()">Eteindre</button>
   </div>
-  <input type="text" [(ngModel)]="deviceName">
-  <button (click)="onSwitchOn()" [disabled]="isActive()">Allumer</button>
-  <button (click)="onSwitchOff()" [disabled]="!isActive()">Eteindre</button>
 </li>

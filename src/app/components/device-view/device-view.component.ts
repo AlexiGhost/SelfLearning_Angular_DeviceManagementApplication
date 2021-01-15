@@ -1,13 +1,13 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { DeviceService } from './../../services/device.service';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
-  selector: 'app-devices',
-  templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.scss']
+  selector: 'app-device-view',
+  templateUrl: './device-view.component.html',
+  styleUrls: ['./device-view.component.scss']
 })
 
-export class DevicesComponent implements OnInit {
+export class DeviceViewComponent implements OnInit {
   devices: any[] = [];
   isAuth = false;
   lastUpdate: Promise<Date> = new Promise(
@@ -20,7 +20,7 @@ export class DevicesComponent implements OnInit {
         2000
       );
     }
-  )
+  );
 
   constructor(private deviceService: DeviceService) {
     setTimeout(

@@ -11,6 +11,7 @@ export class DeviceComponent implements OnInit {
   @Input() deviceName = 'device';
   @Input() deviceStatus = DEVICE_STATUS_OFF;
   @Input() deviceIndex = 0;
+  @Input() id = 0;
 
   constructor(private deviceService: DeviceService) { }
 

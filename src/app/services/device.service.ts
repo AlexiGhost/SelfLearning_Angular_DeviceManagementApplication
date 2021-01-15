@@ -11,14 +11,17 @@ export class DeviceService {
 
   devices = [
     {
-      name:'Television',
+      id: 1,
+      name: 'Television',
       status: DEVICE_STATUS_OFF
     },
     {
+      id: 2,
       name: 'Computer',
       status: DEVICE_STATUS_ON
     },
     {
+      id: 3,
       name: 'DVD Player',
       status: DEVICE_STATUS_OFF
     }
@@ -26,6 +29,15 @@ export class DeviceService {
 
   constructor() {
 
+  }
+
+  getDeviceById(id: number): any {
+    const device = this.devices.find(
+      (deviceObject) => {
+        return deviceObject.id === id;
+      }
+    );
+    return device;
   }
 
   switchOnAll(): void {
