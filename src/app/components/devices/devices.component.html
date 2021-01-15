@@ -1,0 +1,11 @@
+<h2>Devices list</h2>
+<p>Mise à jour : {{ lastUpdate | async | date: 'd MMMM y' }}</p>
+<ul style="list-style: none;">
+  <app-device *ngFor="let device of devices; let i = index"
+    [deviceName]="device.name"
+    [deviceStatus]="device.status"
+    [deviceIndex]="i">
+  </app-device>
+</ul>
+<button [disabled]="!isAuth" (click)="onSwitchOnAll()">Tout allumer</button>
+<button [disabled]="!isAuth" (click)="onSwitchOffAll()">Tout éteindre</button>

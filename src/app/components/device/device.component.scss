@@ -1,0 +1,13 @@
+.statusMarker {
+  display: inline-block;
+  margin-left: 8px;
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  &.statusMarkerOn {
+    background-color: green;
+  }
+  &.statusMarkerOff {
+    background-color: red;
+  }
+}

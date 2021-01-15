@@ -1,0 +1,9 @@
+<li>
+  <div>
+    <div style="display: inline-block;" [ngStyle]="{color: isActive() ? 'green' : 'red'}">{{ deviceName }} is {{ getStatus() }}</div>
+    <div class="statusMarker" [ngClass]="{'statusMarkerOn': isActive(), 'statusMarkerOff': !isActive()}"></div>
+  </div>
+  <input type="text" [(ngModel)]="deviceName">
+  <button (click)="onSwitchOn()" [disabled]="isActive()">Allumer</button>
+  <button (click)="onSwitchOff()" [disabled]="!isActive()">Eteindre</button>
+</li>
