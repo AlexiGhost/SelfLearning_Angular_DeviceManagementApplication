@@ -1,0 +1,18 @@
+<h2>My devices</h2>
+<p>Last update : {{ lastUpdate | async | date: 'y MMMM d hh:mm a' }}</p>
+<div class="container">
+  <ul class="list-group">
+    <app-device *ngFor="let device of devices; let i = index"
+                [deviceName]="device.name"
+                [deviceStatus]="device.status"
+                [deviceIndex]="i"
+                [id]="device.id"
+    >
+    </app-device>
+  </ul>
+  <div class="btn-group">
+    <button class="btn btn-success" (click)="onSwitchOnAll()">Turn everything on</button>
+    <button class="btn btn-danger" (click)="onSwitchOffAll()">Turn everything off</button>
+  </div>
+  <a routerLink="new" class="btn btn-primary">New</a>
+</div>

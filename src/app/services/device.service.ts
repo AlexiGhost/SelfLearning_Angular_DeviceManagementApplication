@@ -33,7 +33,7 @@ export class DeviceService {
 
   }
 
-  emitDeviceSubject() {
+  emitDeviceSubject(): void {
     this.deviceSubject.next(this.devices.slice());
   }
 
@@ -67,6 +67,19 @@ export class DeviceService {
 
   switchOff(index: number): void {
     this.devices[index].status = DEVICE_STATUS_OFF;
+    this.emitDeviceSubject();
+  }
+
+  addDevice(name: string, status?: string): void {
+    const device = {
+      id: 0,
+      name: '',
+      status: DEVICE_STATUS_OFF
+    };
+    device.name = name;
+    if (status) { device.status = status; }
+    device.id = this.devices[this.devices.length - 1].id + 1;
+    this.devices.push(device);
     this.emitDeviceSubject();
   }
 }

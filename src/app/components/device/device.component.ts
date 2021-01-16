@@ -18,10 +18,6 @@ export class DeviceComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getStatus(): string {
-    return this.deviceStatus;
-  }
-
   isActive(): boolean {
     return this.deviceStatus === DEVICE_STATUS_ON;
   }

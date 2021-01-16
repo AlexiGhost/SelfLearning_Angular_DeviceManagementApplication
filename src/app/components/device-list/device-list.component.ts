@@ -3,12 +3,12 @@ import { DeviceService } from '../../services/device.service';
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-device-view',
-  templateUrl: './device-view.component.html',
-  styleUrls: ['./device-view.component.scss']
+  selector: 'app-device-list',
+  templateUrl: './device-list.component.html',
+  styleUrls: ['./device-list.component.scss']
 })
 
-export class DeviceViewComponent implements OnInit {
+export class DeviceListComponent implements OnInit {
   devices: any[] = [];
   deviceSubscription!: Subscription;
   isAuth = false;
@@ -19,7 +19,7 @@ export class DeviceViewComponent implements OnInit {
         () => {
           resolve(date);
         },
-        2000
+        500
       );
     }
   );
