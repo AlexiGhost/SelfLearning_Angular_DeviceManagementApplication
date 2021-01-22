@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -15,12 +15,15 @@ import { FourOFourComponent } from './components/four-o-four/four-o-four.compone
 import {AuthGuardService} from './services/auth-guard.service';
 import { DeviceEditComponent } from './components/device-edit/device-edit.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 const appRoute: Routes = [
   { path: 'devices', canActivate: [AuthGuardService], component: DeviceListComponent},
   { path: 'devices/new', canActivate: [AuthGuardService], component: DeviceEditComponent},
   { path: 'devices/:id', canActivate: [AuthGuardService], component: DeviceDetailComponent},
   { path: 'auth', component: AuthComponent},
+  { path: 'users', component: UserListComponent},
+  { path: 'users/new', component: UserEditComponent},
   { path: 'not-found', component: FourOFourComponent},
   { path: '**', redirectTo: '/not-found' }
 ];
@@ -36,6 +39,7 @@ const appRoute: Routes = [
     FourOFourComponent,
     DeviceEditComponent,
     UserListComponent,
+    UserEditComponent,
 
   ],
   imports: [
@@ -44,6 +48,7 @@ const appRoute: Routes = [
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoute)
   ],
   providers: [],

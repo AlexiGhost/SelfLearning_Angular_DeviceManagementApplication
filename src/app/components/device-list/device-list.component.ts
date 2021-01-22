@@ -39,6 +39,10 @@ export class DeviceListComponent implements OnInit {
       }
     );
     this.deviceService.emitDeviceSubject();
+    if (this.devices.length > 0 && this.devices[0].id === -1) {
+      this.deviceService.getDeviceFromServer();
+      this.deviceService.emitDeviceSubject();
+    }
   }
 
   onSwitchOnAll(): void {
@@ -47,5 +51,13 @@ export class DeviceListComponent implements OnInit {
 
   onSwitchOffAll(): void {
     this.deviceService.switchOffAll();
+  }
+
+  onSave(): void {
+    this.deviceService.saveDeviceToServer();
+  }
+
+  onFetch(): void {
+    this.deviceService.getDeviceFromServer();
   }
 }

@@ -6,7 +6,18 @@ import {Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[] = [];
+  private users: User[] = [
+    {
+      firstName: "James",
+      lastName: "Lanister",
+      email: "james.lanister@mail.com",
+      drinkPreference: "Pepsi",
+      hobbies: [
+        'code',
+        'coffee degustation'
+      ]
+    }
+  ];
   userSubject = new Subject<User[]>();
 
   constructor() { }
@@ -15,7 +26,7 @@ export class UserService {
     this.userSubject.next(this.users.slice());
   }
 
-  addUser(user: User): void {
+  addUser(user: User): void   {
     this.users.push(user);
     this.emitUsers();
   }
