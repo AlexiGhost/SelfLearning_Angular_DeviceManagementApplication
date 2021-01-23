@@ -7,7 +7,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './components/auth/auth.component';
-import { ChuckNorrisJokeComponent } from './components/chuck-norris-joke/chuck-norris-joke.component';
 import { DeviceListComponent } from './components/device-list/device-list.component';
 import { DeviceComponent } from './components/device/device.component';
 import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
@@ -34,7 +33,6 @@ const appRoute: Routes = [
     AppComponent,
     DeviceListComponent,
     DeviceComponent,
-    ChuckNorrisJokeComponent,
     AuthComponent,
     DeviceDetailComponent,
     FourOFourComponent,

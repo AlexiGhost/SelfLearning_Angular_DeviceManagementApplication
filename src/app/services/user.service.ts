@@ -10,7 +10,7 @@ export class UserService {
     {
       id: 1,
       firstName: 'James',
-      lastName: 'Lanister',
+      lastName: 'Lancaster',
       email: 'james.lanister@mail.com',
       drinkPreference: 'Pepsi',
       hobbies: [

@@ -23,7 +23,8 @@
       <h3>Hobbies</h3>
       <div class="form-group" *ngFor="let hobbyControl of getHobbies().controls; let i = index">
         <div class="col-sm-10">
-          <input type="text" class="form-control" [formControlName]="i">
+          <label class="sr-only" for="hobby{{i}}">hobby {{i}}</label>
+          <input type="text" class="form-control" id="hobby{{i}}" [formControlName]="i">
         </div>
         <div class="col-sm-2">
           <button type="button" class="btn btn-danger" (click)="onRemoveHobby(i)">Remove</button>

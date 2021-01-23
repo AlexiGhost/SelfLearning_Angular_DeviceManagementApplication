@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import {Component, NgModule, OnDestroy, OnInit} from '@angular/core';
 import { DeviceService } from '../../services/device.service';
 import {Subscription} from 'rxjs';
 
@@ -8,7 +8,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./device-list.component.scss']
 })
 
-export class DeviceListComponent implements OnInit {
+export class DeviceListComponent implements OnInit, OnDestroy {
   devices: any[] = [];
   deviceSubscription!: Subscription;
   isAuth = false;
@@ -43,6 +43,10 @@ export class DeviceListComponent implements OnInit {
       this.deviceService.getDeviceFromServer();
       this.deviceService.emitDeviceSubject();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.deviceSubscription.unsubscribe();
   }
 
   onSwitchOnAll(): void {
