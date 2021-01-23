@@ -29,26 +29,27 @@ export class DeviceService {
   }
 
   getDeviceById(id: number): any {
-    const device = this.devices.find(
-      (deviceObject) => {
-        return deviceObject.id === id;
+    return this.devices.find(
+      (device) => {
+        return device.id === id;
       }
     );
-    return device;
   }
 
   switchOnAll(): void {
-    for(const device of this.devices) {
+    for (const device of this.devices) {
       device.status = DEVICE_STATUS_ON;
     }
     this.emitDeviceSubject();
+    console.log('All the devices have been switched on');
   }
 
   switchOffAll(): void {
-    for(const device of this.devices) {
+    for (const device of this.devices) {
       device.status = DEVICE_STATUS_OFF;
     }
     this.emitDeviceSubject();
+    console.log('All the devices have been switched off');
   }
 
   switchOn(index: number): void {
@@ -74,12 +75,23 @@ export class DeviceService {
     this.emitDeviceSubject();
   }
 
+  removeDevice(id: number): void {
+    if (id && id > 0) {
+      this.devices.forEach( (device, index) => {
+        if (device.id === id) {
+          this.devices.splice(index, 1);
+          this.emitDeviceSubject();
+        }
+      });
+    }
+  }
+
   saveDeviceToServer(): void {
     this.httpClient
       .put('https://animal-husbandry-manager-default-rtdb.europe-west1.firebasedatabase.app/devices.json', this.devices)
       .subscribe(
         () => {
-          console.log('Devices successfully saved !');
+          console.log('Devices successfully saved in database !');
         },
         (error) => {
           console.error('Devices save failed : ' + error);
@@ -94,10 +106,11 @@ export class DeviceService {
         (response: any) => {
           this.devices = response;
           this.emitDeviceSubject();
+          console.log('Devices successfully reloaded from database !');
         },
         (error) => {
           console.error('Loading devices failed : ' + error);
         }
-      )
+      );
   }
 }

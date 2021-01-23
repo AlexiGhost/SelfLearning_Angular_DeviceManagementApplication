@@ -1,4 +1,4 @@
-import { DeviceService, DEVICE_STATUS_OFF, DEVICE_STATUS_ON } from './../../services/device.service';
+import { DeviceService, DEVICE_STATUS_OFF, DEVICE_STATUS_ON } from '../../services/device.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -28,5 +28,9 @@ export class DeviceComponent implements OnInit {
 
   onSwitchOff(): void {
     this.deviceService.switchOff(this.deviceIndex);
+  }
+
+  onRemove(): void {
+    this.deviceService.removeDevice(this.id);
   }
 }
