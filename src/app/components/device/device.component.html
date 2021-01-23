@@ -1,11 +1,14 @@
 <li class="list-group-item" [ngClass]="{'list-group-item-success': isActive(), 'list-group-item-danger': !isActive()}">
-  <div class="row justify-content-between">
-    <div class="d-table">
-      <a [routerLink]="[id]" class="col-sm-10 font-weight-bold align-middle" >{{ deviceName }}</a>
+  <div class="row">
+    <div class="col">
+      <a [routerLink]="[id]" class="col-sm-8 font-weight-bold align-middle" >{{ deviceName }}</a>
     </div>
-    <div class="col-sm-2 btn-group">
-      <button class="btn btn-success ml-4" (click)="onSwitchOn()" [disabled]="isActive()">Turn on</button>
-      <button class="btn btn-danger ml-4" (click)="onSwitchOff()" [disabled]="!isActive()">Turn off</button>
+    <div class="col-sm-4">
+      <div class="btn-group">
+        <button class="btn btn-success ml-4" (click)="onSwitchOn()" [disabled]="isActive()">Turn on</button>
+        <button class="btn btn-danger ml-4" (click)="onSwitchOff()" [disabled]="!isActive()">Turn off</button>
+      </div>
+      <button class="btn btn-danger" style="margin-left: 1em" (click)="onRemove()">Remove</button>
     </div>
   </div>
 </li>
