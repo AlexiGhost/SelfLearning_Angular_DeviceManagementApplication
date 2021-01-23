@@ -6,10 +6,11 @@
     <p *ngIf="user.hobbies && user.hobbies.length > 0">
       User hobbies :
       <span *ngFor="let hobby of user.hobbies">
-        {{ hobby }}
+          {{ hobby }}
         <span *ngIf="user.hobbies[user.hobbies.length -1] !== hobby"> - </span>
       </span>
     </p>
+    <a routerLink="edit/{{user.id}}" class="btn btn-primary">Edit</a>
   </li>
 </ul>
 <a routerLink="new" class="btn btn-primary">New</a>

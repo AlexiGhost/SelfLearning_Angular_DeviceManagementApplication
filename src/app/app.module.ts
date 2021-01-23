@@ -22,8 +22,9 @@ const appRoute: Routes = [
   { path: 'devices/new', canActivate: [AuthGuardService], component: DeviceEditComponent},
   { path: 'devices/:id', canActivate: [AuthGuardService], component: DeviceDetailComponent},
   { path: 'auth', component: AuthComponent},
-  { path: 'users', component: UserListComponent},
-  { path: 'users/new', component: UserEditComponent},
+  { path: 'users', canActivate: [AuthGuardService], component: UserListComponent},
+  { path: 'users/new', canActivate: [AuthGuardService], component: UserEditComponent, data: {mode : 'create'}},
+  { path: 'users/edit/:id', canActivate: [AuthGuardService], component: UserEditComponent, data: {mode : 'update'}},
   { path: 'not-found', component: FourOFourComponent},
   { path: '**', redirectTo: '/not-found' }
 ];
